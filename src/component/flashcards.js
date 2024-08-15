@@ -13,7 +13,10 @@ export default function FlashCards() {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}/>
-            <textarea/>
+            <textarea
+                type="text"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}/>
 
         </div>
     )
