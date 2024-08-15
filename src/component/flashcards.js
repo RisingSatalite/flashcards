@@ -11,7 +11,7 @@ export default function FlashCards() {
         if(name == ""){
             return
         }
-        if(description=""){
+        if(description == ""){
             return
         }
         const card = {"name":name, "description":description}
@@ -33,8 +33,13 @@ export default function FlashCards() {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}/>
             <br/>
-            <button onClick={() => setCardsk()}>Add card</button>
-            
+            <button onClick={() => addCard()}>Add card</button>
+            {cards.map((card, index) => (
+                <div>
+                    <div>{card.name}</div>
+                    <div>{card.description}</div>
+                </div>
+            ))}
         </div>
     )
 }
