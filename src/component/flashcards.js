@@ -9,7 +9,10 @@ export default function FlashCards() {
     return (
         <div>
             <p>Flash Cards</p>
-            <input/>
+            <input 
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}/>
             <textarea/>
 
         </div>
