@@ -28,12 +28,67 @@ export default function FlashCards() {
   };
 
   //Add export
+  const downloadFile = (filename, content) => {
+    const element = document.createElement('a');//I assume completely pointless
+    const file = new Blob([content], { type: 'text/plain' });
+    element.href = URL.createObjectURL(file);
+    element.download = filename;
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
+  };
+  
+  const handleExport = () => {
+    let text = 'name,description\n'
+    for (let card of cards) {
+      text += card.name + "," + card.description + '\n';
+    }
+    downloadFile('flashcards.csv', text);
+  };
 
   //Add import
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+  
+    reader.onload = (e) => {
+      const content = e.target.result;
+      try {
+        let columns = [];
+        const importedData = content;
+        console.log("All");
+        console.log(importedData);
+  
+        // Read data
+        let lines = importedData.split('\n');
+        for (const line of lines) { // Corrected the loop
+          console.log(line);
+          let sections = line.split(",");
+          if (sections.length == 4) {
+            console.log(sections);
+            // Set arrows
+            setArrowList((arrowList) => [...arrowList, [sections[0], sections[2], sections[3], sections[1]]]);
+            columns.push(sections[0]);
+            columns.push(sections[2]);
+          }
+        }
+        // Set columns
+        // Use set to remove duplicates
+        setItems(Array.from(new Set(columns))); // Corrected to pass an array to setItems
+  
+        setMermaidChart(importedData);
+      } catch (error) {
+        console.error('Error parsing imported data:', error);
+        alert('An error occurred while reading the data: ' + error);
+      }
+    };
+  
+    reader.readAsText(file);
+  };
 
   return (
     <div>
       <h2>Flash Cards</h2>
+      <button onClick={handleExport}>Export cards</button><button>Import cards</button>
       <div class="section">
         <div>Add cards</div>
         <CollapsibleSpan>
@@ -59,6 +114,12 @@ export default function FlashCards() {
               </div>
             ))}
           </div>
+        </CollapsibleSpan>
+      </div>
+      <div>
+        <CollapsibleSpan>
+            <button>Next card</button>
+            
         </CollapsibleSpan>
       </div>
     </div>
