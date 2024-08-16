@@ -10,6 +10,8 @@ export default function FlashCards() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
+  const [randomCards, setRandomCards] = useState([])
+
   const addCard = (e) => {
     e.preventDefault(); // Prevent form submission
 
