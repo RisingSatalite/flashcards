@@ -52,6 +52,7 @@ export default function FlashCards() {
   
     reader.onload = (e) => {
       const content = e.target.result;
+      setCards([])
       try {
         let columns = [];
         const importedData = content;
@@ -86,7 +87,7 @@ export default function FlashCards() {
       <br/>
       <input
           type="file"
-          accept=".txt"
+          accept=".csv"
           onChange={handleFileUpload}
           style={{ display: 'none' }}
           id="fileInput"
