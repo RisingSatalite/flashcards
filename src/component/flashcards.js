@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Flipable from "./flipable";
+import FlipableAlt from "./flipablealt";
 
 export default function FlashCards() {
   const [cards, setCards] = useState([]);

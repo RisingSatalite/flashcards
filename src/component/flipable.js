@@ -10,19 +10,18 @@ const Flipable = ({ mode1, mode2 }) => {
   return (
     <div class="show">
       <button onClick={toggleVisibility}>
-        {isOpen ? 'Minimize' : 'Open'}
-      </button>
-      <br/>
-      {!isOpen && (
-        <span className="collapsible-content">
-          {mode1}
-        </span>
-      )}
-      {isOpen && (
-        <span className="collapsible-content">
-          {mode2}
-        </span>
-      )}
+        <br/>
+        {!isOpen && (
+            <span className="collapsible-content">
+            {mode1}
+            </span>
+        )}
+        {isOpen && (
+            <span className="collapsible-content">
+            {mode2}
+            </span>
+        )}
+        </button>
     </div>
   );
 };
