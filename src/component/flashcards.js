@@ -47,6 +47,7 @@ export default function FlashCards() {
           <div class="card" key={index}>
             <strong>{card.name}</strong>
             <p>{card.description}</p>
+            <Flipable mode1={card.name} mode2={card.description}/>
           </div>
         ))}
       </div>
