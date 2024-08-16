@@ -63,19 +63,13 @@ export default function FlashCards() {
         for (const line of lines) { // Corrected the loop
           console.log(line);
           let sections = line.split(",");
-          if (sections.length == 4) {
-            console.log(sections);
-            // Set arrows
-            setArrowList((arrowList) => [...arrowList, [sections[0], sections[2], sections[3], sections[1]]]);
-            columns.push(sections[0]);
-            columns.push(sections[2]);
-          }
+          console.log(sections);
+          // Set card
+          const name = sections[0]
+          const description = sections[1]
+          const card = { name, description };
+          setCards((cardList) => [...cardList, card]);
         }
-        // Set columns
-        // Use set to remove duplicates
-        setItems(Array.from(new Set(columns))); // Corrected to pass an array to setItems
-  
-        setMermaidChart(importedData);
       } catch (error) {
         console.error('Error parsing imported data:', error);
         alert('An error occurred while reading the data: ' + error);
@@ -88,7 +82,17 @@ export default function FlashCards() {
   return (
     <div>
       <h2>Flash Cards</h2>
-      <button onClick={handleExport}>Export cards</button><button>Import cards</button>
+      <button onClick={handleExport}>Export cards</button>
+      <br/>
+      <input
+          type="file"
+          accept=".txt"
+          onChange={handleFileUpload}
+          style={{ display: 'none' }}
+          id="fileInput"
+      />
+      <button onClick={() => document.getElementById('fileInput').click()}>Import Cards</button>
+        
       <div class="section">
         <div>Add cards</div>
         <CollapsibleSpan>
