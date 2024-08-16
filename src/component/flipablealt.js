@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const FlipableAlt = ({ mode1, mode2 }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleVisibility = () => {
     setIsOpen(!isOpen);
@@ -14,7 +14,7 @@ const FlipableAlt = ({ mode1, mode2 }) => {
         <br/>
         {!isOpen && (
           <span className="collapsible-content">
-            {mode1}
+            <strong>{mode1}</strong>
           </span>
         )}
         {isOpen && (

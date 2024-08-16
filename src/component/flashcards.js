@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Flipable from "./flipable";
 import FlipableAlt from "./flipablealt";
+import CollapsibleSpan from "./collaspable";
 
 export default function FlashCards() {
   const [cards, setCards] = useState([]);
@@ -26,31 +27,39 @@ export default function FlashCards() {
     setDescription('');
   };
 
+  //Add export
+
+  //Add import
+
   return (
     <div>
       <h2>Flash Cards</h2>
-      <form onSubmit={addCard}>
-        <input
-          type="text"
-          placeholder="Card name or answer"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <textarea
-          placeholder="Card definition or problem"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <button type="submit">Add Card</button>
-      </form>
-      <div>
-        {cards.map((card, index) => (
-          <div class="card" key={index}>
-            <strong>{card.name}</strong>
-            <p>{card.description}</p>
-            <Flipable mode1={card.name} mode2={card.description}/>
+      <div class="section">
+        <div>Add cards</div>
+        <CollapsibleSpan>
+          <form onSubmit={addCard}>
+            <input
+              type="text"
+              placeholder="Card name or answer"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <br/>
+            <textarea
+              placeholder="Card definition or problem"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <button type="submit">Add Card</button>
+          </form>
+          <div>
+            {cards.map((card, index) => (
+              <div class="card" key={index}>
+                <FlipableAlt mode1={card.name} mode2={card.description}/>
+              </div>
+            ))}
           </div>
-        ))}
+        </CollapsibleSpan>
       </div>
     </div>
   );

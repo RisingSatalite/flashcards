@@ -8,7 +8,7 @@ const Flipable = ({ mode1, mode2 }) => {
   };
 
   return (
-    <div class="show">
+    <div>
       <button onClick={toggleVisibility}>
         <br/>
         {!isOpen && (
