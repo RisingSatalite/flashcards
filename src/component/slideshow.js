@@ -21,7 +21,7 @@ const Slideshow = ({ display }) => {
       <button onClick={prevSlide}>Previous</button>
       
       <div className="slide">
-        <FlipableAlt mode1={display[currentIndex].name} mode2={display[currentIndex].description}></FlipableAlt>
+        <FlipableAlt mode1={display[currentIndex].name} mode2={display[currentIndex].description} mode='false'></FlipableAlt>
       </div>
       
       <button onClick={nextSlide}>Next</button>
