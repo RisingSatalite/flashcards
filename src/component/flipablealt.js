@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from 'react';
 
-const FlipableAlt = ({ mode1, mode2, generalMode="normal" }) => {
+const FlipableAlt = ({ mode1, mode2, generalMode = "normal" }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Run when mode1 or mode2 changes
   useEffect(() => {
-    if(generalMode == 'false'){
-      setIsOpen(false)
-    }else if(generalMode == 'true'){
-      setIsOpen(true)
+    if (generalMode === 'false') {
+      setIsOpen(false);
+    } else if (generalMode === 'true') {
+      setIsOpen(true);
     }
-    //Else, if normal do nothing
-  }, [mode1, mode2])
+    // If generalMode is 'normal', do nothing
+  }, [mode1, mode2, generalMode]);
 
   const toggleVisibility = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <div class="show">
+    <div className="show">
       <button onClick={toggleVisibility}>
         {isOpen ? 'Description' : 'Name'}
-        <br/>
+        <br />
         {!isOpen && (
           <span className="collapsible-content">
             <strong>{mode1}</strong>
