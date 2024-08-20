@@ -13,7 +13,18 @@ export default function FlashCards() {
   const [randomCards, setRandomCards] = useState([])
 
   useEffect(()=>{
-
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        // Generate a random index from 0 to i
+        const j = Math.floor(Math.random() * (i + 1));
+    
+        // Swap elements array[i] and array[j]
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+    
+    setRandomCards(shuffleArray(cards))
   }, [cards, randomCards])
   const addCard = (e) => {
     e.preventDefault(); // Prevent form submission
@@ -134,7 +145,7 @@ export default function FlashCards() {
       <div class="section">
         <div>View card</div>
         <CollapsibleSpan>
-          <Slideshow display={cards}></Slideshow>
+          <Slideshow display={randomCards}></Slideshow>
         </CollapsibleSpan>
       </div>
     </div>
