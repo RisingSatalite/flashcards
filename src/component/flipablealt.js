@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-const FlipableAlt = ({ mode1, mode2, mode="normal" }) => {
+const FlipableAlt = ({ mode1, mode2, generalMode="normal" }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if(mode == 'false'){
+    if(generalMode == 'false'){
       setIsOpen(false)
-    }else if(mode == 'true'){
+    }else if(generalMode == 'true'){
       setIsOpen(true)
     }
     //Else, if normal do nothing
-  }, [mode1. mode2])
+  }, [mode1, mode2])
 
   const toggleVisibility = () => {
     setIsOpen(!isOpen);

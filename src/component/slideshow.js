@@ -20,8 +20,10 @@ const Slideshow = ({ display }) => {
     <div className="slideshow">
       <button onClick={prevSlide}>Previous</button>
       
-      <div className="slide">
-        <FlipableAlt mode1={display[currentIndex].name} mode2={display[currentIndex].description} mode='false'></FlipableAlt>
+      <div className="slide card">
+        {display.length && (
+          <FlipableAlt mode1={display[currentIndex].name} mode2={display[currentIndex].description} mode='false'></FlipableAlt>
+        )}
       </div>
       
       <button onClick={nextSlide}>Next</button>
