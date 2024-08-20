@@ -4,6 +4,7 @@ import { useState } from "react";
 import Flipable from "./flipable";
 import FlipableAlt from "./flipablealt";
 import CollapsibleSpan from "./collaspable";
+import Slideshow from "./slideshow";
 
 export default function FlashCards() {
   const [cards, setCards] = useState([]);
@@ -123,10 +124,9 @@ export default function FlashCards() {
           </div>
         </CollapsibleSpan>
       </div>
-      <div>
+      <div class="section">
         <CollapsibleSpan>
-            <button>Next card</button>
-            <div>{current}</div>
+            <Slideshow display={cards}></Slideshow>
         </CollapsibleSpan>
       </div>
     </div>
