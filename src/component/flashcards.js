@@ -143,7 +143,7 @@ export default function FlashCards() {
         </CollapsibleSpan>
       </div>
       <div class="section">
-        <div>View card</div>
+        <div>View cards</div>
         <CollapsibleSpan>
           <Slideshow display={randomCards}></Slideshow>
         </CollapsibleSpan>
