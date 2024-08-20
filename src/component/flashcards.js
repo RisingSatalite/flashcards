@@ -126,7 +126,7 @@ export default function FlashCards() {
       <div>
         <CollapsibleSpan>
             <button>Next card</button>
-            
+            <div>{current}</div>
         </CollapsibleSpan>
       </div>
     </div>
