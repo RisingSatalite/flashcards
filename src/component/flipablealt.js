@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const FlipableAlt = ({ mode1, mode2 }) => {
+const FlipableAlt = ({ mode1, mode2, mode="normal" }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect
 
   const toggleVisibility = () => {
     setIsOpen(!isOpen);

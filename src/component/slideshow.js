@@ -4,19 +4,6 @@ import FlipableAlt from './flipablealt';
 const Slideshow = ({ display }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Automatically go to the next slide every 3 seconds
-  useEffect(() => {
-    //console.log(display)
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => 
-        prevIndex === display.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 3000);
-
-    // Clean up the interval on component unmount
-    return () => clearInterval(interval);
-  }, [display.length]);
-
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => 
       prevIndex === display.length - 1 ? 0 : prevIndex + 1
@@ -34,8 +21,7 @@ const Slideshow = ({ display }) => {
       <button onClick={prevSlide}>Previous</button>
       
       <div className="slide">
-        <div>{display[currentIndex]}</div>
-        <FlipableAlt mode1={"f"} mode2={"l"}></FlipableAlt>
+        <FlipableAlt mode1={display[currentIndex].name} mode2={display[currentIndex].description}></FlipableAlt>
       </div>
       
       <button onClick={nextSlide}>Next</button>

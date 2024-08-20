@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from "react";
-import Flipable from "./flipable";
 import FlipableAlt from "./flipablealt";
 import CollapsibleSpan from "./collaspable";
 import Slideshow from "./slideshow";
@@ -66,8 +65,12 @@ export default function FlashCards() {
         let lines = importedData.split('\n');
         for (const line of lines) { // Corrected the loop
           console.log(line);
+          if(line == ""){
+            continue
+          }
           let sections = line.split(",");
-          console.log(sections);
+          //console.log(sections);
+          
           // Set card
           const name = sections[0]
           const description = sections[1]
@@ -126,7 +129,7 @@ export default function FlashCards() {
       </div>
       <div class="section">
         <CollapsibleSpan>
-            <Slideshow display={cards}></Slideshow>
+          <Slideshow display={cards}></Slideshow>
         </CollapsibleSpan>
       </div>
     </div>
