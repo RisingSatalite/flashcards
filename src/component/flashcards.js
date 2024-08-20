@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FlipableAlt from "./flipablealt";
 import CollapsibleSpan from "./collaspable";
 import Slideshow from "./slideshow";
@@ -12,6 +12,9 @@ export default function FlashCards() {
 
   const [randomCards, setRandomCards] = useState([])
 
+  useEffect(()=>{
+
+  }, [cards, randomCards])
   const addCard = (e) => {
     e.preventDefault(); // Prevent form submission
 
@@ -88,17 +91,18 @@ export default function FlashCards() {
 
   return (
     <div>
-      <h2>Flash Cards</h2>
-      <button onClick={handleExport}>Export cards</button>
-      <br/>
-      <input
-          type="file"
-          accept=".csv"
-          onChange={handleFileUpload}
-          style={{ display: 'none' }}
-          id="fileInput"
-      />
-      <button onClick={() => document.getElementById('fileInput').click()}>Import Cards</button>
+      <div>
+        <span class="control">Flash Cards</span>
+        <button class="control" onClick={handleExport}>Export cards</button>
+        <input
+            type="file"
+            accept=".csv"
+            onChange={handleFileUpload}
+            style={{ display: 'none' }}
+            id="fileInput"
+        />
+        <button class="control" onClick={() => document.getElementById('fileInput').click()}>Import Cards</button>
+      </div>
         
       <div class="section">
         <div>Add cards</div>
@@ -128,6 +132,7 @@ export default function FlashCards() {
         </CollapsibleSpan>
       </div>
       <div class="section">
+        <div>View card</div>
         <CollapsibleSpan>
           <Slideshow display={cards}></Slideshow>
         </CollapsibleSpan>

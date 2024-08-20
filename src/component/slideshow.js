@@ -18,7 +18,7 @@ const Slideshow = ({ display }) => {
 
   return (
     <div className="slideshow">
-      <button onClick={prevSlide}>Previous</button>
+      <button class="change" onClick={prevSlide}>Previous</button>
       
       <div className="slide card">
         {display.length && (
@@ -26,7 +26,7 @@ const Slideshow = ({ display }) => {
         )}
       </div>
       
-      <button onClick={nextSlide}>Next</button>
+      <button class="change" onClick={nextSlide}>Next</button>
     </div>
   );
 };

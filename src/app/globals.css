@@ -41,6 +41,7 @@ input, textarea {
   padding: 10px;
   background-color: rgb(128, 72, 7);
   display: inline-block;
+  text-align: center;
   width: 150px;
 }
 
@@ -48,4 +49,16 @@ input, textarea {
   background-color: rgb(35, 33, 33);
   padding: 20px;
   width: inherit;
+}
+
+.change{
+  background-color: black;
+  padding: 20px;
+}
+
+.control{
+  padding-left: 10px;
+  margin: 10px;
+  padding-right: 10px;
+  background-color: rgb(34, 34, 34);
 }
