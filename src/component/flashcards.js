@@ -6,6 +6,8 @@ import CollapsibleSpan from "./collaspable";
 import Slideshow from "./slideshow";
 
 export default function FlashCards() {
+  const [name, setName] = useState('Flashcards')
+  
   const [cards, setCards] = useState([]);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -58,7 +60,7 @@ export default function FlashCards() {
     for (let card of cards) {
       text += card.name + "," + card.description + '\n';
     }
-    downloadFile('flashcards.csv', text);
+    downloadFile(name+'.csv', text);
   };
 
   //Add import
@@ -104,6 +106,12 @@ export default function FlashCards() {
     <div>
       <div>
         <span class="control">Flash Cards</span>
+        <input
+          type="text"
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+          placeholder="Name your drawing name"
+        />
         <button class="control" onClick={handleExport}>Export cards</button>
         <input
             type="file"
